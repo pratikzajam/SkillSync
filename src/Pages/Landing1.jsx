@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import '../index.css'; 
+import { Link } from 'react-router-dom';
+import '../index.css';
 
 const App = () => {
   const [email, setEmail] = useState('');
   const currentDate = new Date();
-  const formattedDate = currentDate.toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
+  const formattedDate = currentDate.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   });
 
   // Testimonial data
@@ -104,28 +105,28 @@ const App = () => {
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="bg-white shadow-lg py-4 px-6 md:px-8 fixed w-full z-50 transition-all duration-300">
-  <div className="max-w-5xl mx-auto flex justify-between items-center">
-    <div className="flex items-center">
-      <div className="text-2xl font-bold text-green-600 mr-2">
-        <i className="fas fa-code-branch"></i>
-      </div>
-      <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-blue-600">SkillMatch</span>
-    </div>
-    
-    {/* Desktop navigation */}
-    <div className="hidden md:flex space-x-8">
-      <a href="#how-it-works" className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200 py-2">How It Works</a>
-      <a href="#testimonials" className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200 py-2">Success Stories</a>
-      <a href="#insights" className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200 py-2">Insights</a>
-      <a href="#about" className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200 py-2">About</a>
-    </div>
-    
-    <div className="flex space-x-3 md:space-x-4">
-      <button className="px-3 md:px-4 py-2 rounded-lg text-gray-800 border border-gray-300 hover:bg-gray-100 font-medium transition-colors duration-200">Log In</button>
-      <button className="px-3 md:px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 font-medium transition-colors duration-200 shadow-md hover:shadow-lg">Sign Up</button>
-    </div>
-  </div>
-</nav>
+        <div className="max-w-5xl mx-auto flex justify-between items-center">
+          <div className="flex items-center">
+            <div className="text-2xl font-bold text-green-600 mr-2">
+              <i className="fas fa-code-branch"></i>
+            </div>
+            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-600 to-blue-600">SkillMatch</span>
+          </div>
+
+          {/* Desktop navigation */}
+          <div className="hidden md:flex space-x-8">
+            <a href="#how-it-works" className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200 py-2">How It Works</a>
+            <a href="#testimonials" className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200 py-2">Success Stories</a>
+            <a href="#insights" className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200 py-2">Insights</a>
+            <a href="#about" className="text-gray-700 hover:text-green-600 font-medium transition-colors duration-200 py-2">About</a>
+          </div>
+
+          <div className="flex space-x-3 md:space-x-4">
+            <button className="px-3 md:px-4 py-2 rounded-lg text-gray-800 border border-gray-300 hover:bg-gray-100 font-medium transition-colors duration-200">Log In</button>
+            <button className="px-3 md:px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 font-medium transition-colors duration-200 shadow-md hover:shadow-lg">Sign Up</button>
+          </div>
+        </div>
+      </nav>
 
       {/* Hero Section */}
       <div className="pt-24 relative overflow-hidden bg-gradient-to-r from-green-600 to-blue-600" style={{ height: '600px' }}>
@@ -313,11 +314,10 @@ const App = () => {
                 <div className="p-6">
                   <div className="mb-4 flex flex-wrap gap-2">
                     {challenge.tags.map((tag, tagIndex) => (
-                      <span key={tagIndex} className={`px-3 py-1 rounded-full text-sm ${
-                        tagIndex === 0 ? "bg-blue-100 text-blue-800" : 
-                        tagIndex === 1 ? "bg-green-100 text-green-800" : 
-                        "bg-purple-100 text-purple-800"
-                      }`}>
+                      <span key={tagIndex} className={`px-3 py-1 rounded-full text-sm ${tagIndex === 0 ? "bg-blue-100 text-blue-800" :
+                        tagIndex === 1 ? "bg-green-100 text-green-800" :
+                          "bg-purple-100 text-purple-800"
+                        }`}>
                         {tag}
                       </span>
                     ))}
@@ -394,10 +394,13 @@ const App = () => {
             Join thousands of professionals and companies who've already discovered the power of skills-based matching.
           </p>
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-            <button className="flex items-center justify-center px-8 py-3 rounded-md bg-white text-green-600 hover:bg-green-50 border border-white text-lg">
+            <Link
+              to="/signup"
+              className="flex items-center justify-center px-8 py-3 rounded-md bg-white text-green-600 hover:bg-green-50 border border-white text-lg"
+            >
               <span className="mr-2">👤</span>
               Join as a Candidate
-            </button>
+            </Link>
             <button className="flex items-center justify-center px-8 py-3 rounded-md bg-transparent text-white hover:bg-white/10 border border-white text-lg">
               <span className="mr-2">🏢</span>
               Post Work as a Company

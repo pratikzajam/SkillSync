@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../index.css';
 
 const App = () => {
@@ -101,7 +102,20 @@ const App = () => {
     alert('Thank you for subscribing!');
   };
 
+  const navigate = useNavigate();
+
+  const handleNavigation = () => {
+    navigate('/signup');
+  };
+
+  const handleLogin = () => {
+    navigate('/login');
+  };
+
   return (
+
+
+
     <div className="min-h-screen bg-white">
       {/* Navigation */}
       <nav className="bg-white shadow-lg py-4 px-6 md:px-8 fixed w-full z-50 transition-all duration-300">
@@ -122,8 +136,8 @@ const App = () => {
           </div>
 
           <div className="flex space-x-3 md:space-x-4">
-            <button className="px-3 md:px-4 py-2 rounded-lg text-gray-800 border border-gray-300 hover:bg-gray-100 font-medium transition-colors duration-200">Log In</button>
-            <button className="px-3 md:px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 font-medium transition-colors duration-200 shadow-md hover:shadow-lg">Sign Up</button>
+            <button onClick={handleLogin} className="px-3 md:px-4 py-2 rounded-lg text-gray-800 border border-gray-300 hover:bg-gray-100 font-medium transition-colors duration-200">Log In</button>
+            <button onClick={handleNavigation} className="px-3 md:px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 font-medium transition-colors duration-200 shadow-md hover:shadow-lg">Sign Up</button>
           </div>
         </div>
       </nav>
@@ -140,9 +154,12 @@ const App = () => {
                 A skills-first hiring platform that matches talent with opportunities based on proven abilities, not credentials.
               </p>
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                <button className="flex items-center justify-center px-8 py-3 rounded-md bg-green-600 hover:bg-green-700 text-white text-lg">
+                <button
+                  onClick={handleNavigation}
+                  className="flex items-center justify-center px-8 py-3 rounded-md bg-white text-green-600 hover:bg-green-50 border border-white text-lg"
+                >
                   <span className="mr-2">👤</span>
-                  Join as a Candidate
+                  Join as a Candidates
                 </button>
                 <button className="flex items-center justify-center px-8 py-3 rounded-md bg-white text-blue-600 hover:bg-blue-50 border border-blue-600 text-lg">
                   <span className="mr-2">🏢</span>

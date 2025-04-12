@@ -1,13 +1,15 @@
-import axios from 'axios';
 import { useState } from 'react';
 import { Eye, EyeOff, User, Lock, ArrowRight } from 'lucide-react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import axios from 'axios'
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,7 +31,9 @@ export default function LoginPage() {
         toast.success(response.data.message);  // Success message from API
         const token = response.data.data.token;
         localStorage.setItem('token', token);
-        // Redirect or do something after login
+
+        // Navigate to the desired page after successful login
+        navigate('/dashboard'); // Change this to your desired route
       } else {
         toast.error(response.data.message || 'Login failed');  // Error message from API
       }
@@ -39,14 +43,13 @@ export default function LoginPage() {
     }
   };
 
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
       <ToastContainer />
       <div className="max-w-md w-full bg-white rounded-xl shadow-lg overflow-hidden">
         <div className="p-8">
           <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-800">Anti-Resume</h1>
+            <h1 className="text-3xl font-bold text-gray-800">SkillMatch</h1>
             <p className="text-gray-500 mt-2">Sign in to your account</p>
           </div>
 

@@ -3,6 +3,7 @@ import { Eye, EyeOff, Mail, Lock, CheckCircle } from 'lucide-react';
 import axios from 'axios';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 
 export default function SignupForm() {
@@ -14,6 +15,8 @@ export default function SignupForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const [agreeToTerms, setAgreeToTerms] = useState(false);
+
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -61,7 +64,7 @@ export default function SignupForm() {
       if (data.status) {
         toast.success(data.message);
         // Optionally redirect after success
-        // navigate('/login'); 
+        navigate('/login'); 
       } else {
         toast.error(data.message || "Signup failed");
       }
